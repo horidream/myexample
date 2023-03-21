@@ -1,0 +1,20 @@
+{
+  "name": "grpc_test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "server": "env -u https_proxy -u http_proxy -u ALL_PROXY bash -c 'nodemon server.js'",
+    "client": "env -u https_proxy -u http_proxy -u ALL_PROXY bash -c 'node client.js'",
+    "grpc-bin": "grpc_tools_node_protoc --descriptor_set_out=abc.bin -I ./ *.proto",
+    "test": "env -u https_proxy -u http_proxy -u ALL_PROXY bash -c 'grpc_cli call localhost:50051 helloworld.Greeter.SayHello \"name: \\\"John\\\"\"'"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.8.12",
+    "@grpc/proto-loader": "^0.7.5",
+    "grpc-reflection-js": "^0.1.2",
+    "grpc-server-reflection": "^0.1.5",
+    "minimist": "^1.2.8",
+    "protobufjs": "^7.2.2"
+  }
+}
